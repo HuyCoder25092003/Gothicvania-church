@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour,IAnimation
 {
-    Animator animator;
-    PlayerController.PlayerState oldState;
+    public Animator animator;
+    PlayerState oldState;
+    [SerializeField]int combo;
+    bool isCombo;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -14,9 +16,10 @@ public class PlayerAnimation : MonoBehaviour,IAnimation
     // Update is called once per frame
     void Update()
     {
+        Attack();
         Jump();
         CrouchAttack();
-        Attack();
+        
     }
 
     void CrouchAttack()
@@ -26,7 +29,6 @@ public class PlayerAnimation : MonoBehaviour,IAnimation
         else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             animator.SetFloat("AttackState", 0);
-            return;
         }
     }
 
@@ -42,22 +44,18 @@ public class PlayerAnimation : MonoBehaviour,IAnimation
         else
         {
             animator.SetFloat("AttackState", 0);
-            return;
         }
     }
+
     void Attack()
     {
-        if (!Input.GetKey(KeyCode.C))
-            return;
-        else
-        {
-            animator.SetFloat("AttackState", 0);
-            if (!Input.GetKey(KeyCode.C))
-                return;
-            else animator.SetFloat("AttackState", Random.Range(0, 2));
+        if (Input.GetKey(KeyCode.C) )
+        {       
+            animator.SetFloat("AttackState", Random.Range(0,2));
         }
     }
-    public void ChangeAnim(PlayerController.PlayerState playerState)
+
+    public void ChangeAnim(PlayerState playerState)
     {
         if(playerState == oldState)
             return;

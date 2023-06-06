@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IAnimation
 {
-    public void ChangeAnim(PlayerController.PlayerState playerState);
+    public void ChangeAnim(PlayerState playerState);
 }

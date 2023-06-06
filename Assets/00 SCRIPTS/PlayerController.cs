@@ -4,20 +4,6 @@ using UnityEngine;
 
 public class PlayerController : Singleton<PlayerController>
 {
-    public enum PlayerState
-    {
-        Idle=0,
-        Walk=1,
-        Jump =2,
-        Fall=3,
-        Kick=4,
-        Crouch=5,
-        CrouchKick=6,
-        FlyingKick=7,
-        Hurt=8,
-        Punch=9,
-    }
-
     float moveX;
     public float MoveX { get => moveX; set => moveX = value; }
     public float Speed { get => speed; set => speed = value; }
@@ -38,25 +24,27 @@ public class PlayerController : Singleton<PlayerController>
     }
     void Update()
     {
-        Jumping();
         UpdateState();
         UpdateAnim();
+        Jumping();
     }
     void FixedUpdate()
     {
         Moving();
+        Flip();
     }
     void Moving()
     {
         moveX = speed * Input.GetAxisRaw("Horizontal");
         rigi.velocity = new Vector2(moveX, rigi.velocity.y);
-
+    }
+    void Flip()
+    {
         if (moveX > 0)
             transform.localScale = Vector3.one;
         else if (moveX < 0)
-            transform.localScale = new Vector3(-1,1,1);
+            transform.localScale = new Vector3(-1, 1, 1);
     }
-
     void Jumping()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
@@ -64,6 +52,17 @@ public class PlayerController : Singleton<PlayerController>
             isOnGround = false;
             rigi.AddForce(new Vector2(0, jumpForce));
         }
+        if (rigi.velocity.y > 0 && !isOnGround)
+        {
+            playerState = PlayerState.Jump;
+            if (Input.GetKey(KeyCode.C))
+                playerState = PlayerState.FlyingKick;
+        }
+        else if(!isOnGround)
+        {
+            playerState = PlayerState.Fall;
+        }
+            
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -72,40 +71,42 @@ public class PlayerController : Singleton<PlayerController>
     }
     void UpdateState()
     {
-        if(isOnGround)
+        if (!isOnGround) 
+            return;
+        else if (Input.GetKey(KeyCode.DownArrow))
         {
-            if (moveX == 0)
-                playerState = PlayerState.Idle;
-            else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-            {
-                if (Input.GetKey(KeyCode.C))
-                    playerState = PlayerState.CrouchKick;
-                else playerState = PlayerState.Crouch;
-            }
-            else if (Input.GetKey(KeyCode.C))
-            {
-                playerState = PlayerState.Kick;
-                if (Input.GetKey(KeyCode.C))
-                {
-                    playerState = (PlayerState)Random.Range((float)PlayerState.Kick, (float)PlayerState.Punch + 1);
-                }
-            }
-            else playerState = PlayerState.Walk;
+            if (Input.GetKeyDown(KeyCode.C))
+                playerState = PlayerState.CrouchKick;
+            else playerState = PlayerState.Crouch;
         }
-        else
+        else if (Input.GetKey(KeyCode.C))
         {
-            if (rigi.velocity.y > 0)
-            {
-                playerState = PlayerState.Jump;
-                if (Input.GetKey(KeyCode.C))
-                    playerState = PlayerState.FlyingKick;
-            }
-            else playerState = PlayerState.Fall;
+            playerState = PlayerState.Attack;
         }
+        else if (moveX != 0)
+        {
+            playerState = PlayerState.Walk;
+        }
+        else 
+        {
+            playerState = PlayerState.Idle;
+        }
+
     }
     void UpdateAnim()
     {
         playerAnimation.ChangeAnim(playerState);
     }
-
+}
+public enum PlayerState
+{
+    Idle = 0,
+    Walk = 1,
+    Jump = 2,
+    Fall = 3,
+    Attack = 4,
+    Crouch = 5,
+    CrouchKick = 6,
+    FlyingKick = 7,
+    Hurt = 8,
 }

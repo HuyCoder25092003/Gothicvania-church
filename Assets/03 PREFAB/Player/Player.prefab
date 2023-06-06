@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7961237086093573074}
   - component: {fileID: 7961237086093573072}
   - component: {fileID: 7961237086093573068}
+  - component: {fileID: 4056253096014396462}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -72,6 +73,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!68 &4056253096014396462
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7961237086093573079}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.8432245, y: 0.9070949}
+  - {x: 1.18645, y: 0.90709496}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &7961237086557960961
 GameObject:
   m_ObjectHideFlags: 0
