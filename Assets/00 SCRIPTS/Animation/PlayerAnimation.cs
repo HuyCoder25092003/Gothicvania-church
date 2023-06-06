@@ -49,10 +49,23 @@ public class PlayerAnimation : MonoBehaviour,IAnimation
 
     void Attack()
     {
-        if (Input.GetKey(KeyCode.C) )
+        if (Input.GetKey(KeyCode.C) &&!isCombo)
         {       
-            animator.SetFloat("AttackState", Random.Range(0,2));
+            isCombo = true;
+            animator.SetFloat("AttackState", combo);
         }
+    }
+
+    public void StartCombo()
+    {
+        isCombo=false;
+        if (combo < 1)
+            combo++;
+    }
+    public void FinishCombo()
+    {
+        isCombo = false;
+        combo = 0;
     }
 
     public void ChangeAnim(PlayerState playerState)
