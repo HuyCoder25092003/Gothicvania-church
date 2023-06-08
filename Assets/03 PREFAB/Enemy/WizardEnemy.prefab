@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1298894978}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,9 +42,8 @@ GameObject:
   - component: {fileID: 5455784541731341655}
   - component: {fileID: 5455784541731341653}
   - component: {fileID: 5455784541731341654}
-  - component: {fileID: 5455784541731341995}
   - component: {fileID: 1839723009}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WizardEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,30 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 1155291095208486390, guid: 786856f623049d24f9cc51d36be5d41d, type: 3}
-  maxTimeShoot: 3
+  maxTimeShoot: 2
   shooting: {fileID: 1298894977}
---- !u!68 &5455784541731341995
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5455784539775434815}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.92}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -1.6421714, y: -0.055716038}
-  - {x: 0.5, y: 0}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!61 &1839723009
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -164,7 +141,7 @@ GameObject:
   - component: {fileID: 5455784541075392109}
   - component: {fileID: 5455784541075392110}
   - component: {fileID: 5455784541075392111}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Animations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
