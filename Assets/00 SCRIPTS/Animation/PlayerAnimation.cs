@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour,IAnimation
 {
-    public Animator animator;
+    Animator animator;
     PlayerState oldState;
     [SerializeField]int combo;
     bool isCombo;
@@ -55,13 +55,6 @@ public class PlayerAnimation : MonoBehaviour,IAnimation
             animator.SetFloat("AttackState", combo);
         }
     }
-
-    public void StartCombo()
-    {
-        isCombo=false;
-        if (combo < 1)
-            combo++;
-    }
     public void FinishCombo()
     {
         isCombo = false;
@@ -70,9 +63,22 @@ public class PlayerAnimation : MonoBehaviour,IAnimation
 
     public void ChangeAnim(PlayerState playerState)
     {
-        if(playerState == oldState)
-            return;
         animator.SetTrigger(playerState.ToString());
         oldState = playerState;
+    }
+
+    public void ChangeAnim(GhoulState ghoulState)
+    {
+        
+    }
+
+    public void ChangeAnim(WizardState wizardState)
+    {
+        
+    }
+
+    public void ChangeAnim(AngleState angleState)
+    {
+        
     }
 }

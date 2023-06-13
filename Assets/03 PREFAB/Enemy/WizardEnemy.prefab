@@ -100,9 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2cb23ad15adf874e8fd118af9c0bf78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 30
   _bullet: {fileID: 1155291095208486390, guid: 786856f623049d24f9cc51d36be5d41d, type: 3}
   maxTimeShoot: 2
   shooting: {fileID: 1298894977}
+  wizardState: 0
 --- !u!61 &1839723009
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -247,5 +249,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a66d21d75057a5249a3221e0fea107aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  shooting: {fileID: 0}

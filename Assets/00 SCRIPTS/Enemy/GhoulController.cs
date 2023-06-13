@@ -2,22 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhoulController : MonoBehaviour
+
+public class GhoulController : AbstractEnemy,IDamageable
 {
     [SerializeField] float speed;
     Rigidbody2D rigi;
+    [SerializeField] GhoulState ghoulState;
+    [SerializeField]bool isOnGround;
+    GhoulAnimations anim;
     void Start()
     {
         rigi = GetComponent<Rigidbody2D>();
+        anim = GetComponentInChildren<GhoulAnimations>();
     }
-
+    void Update()
+    {
+        UpdateState();
+        UpdateAnim(); 
+    }
     void FixedUpdate()
     {
         Moving();
     }
     void Moving()
     {
-        rigi.velocity = transform.right * speed;
+        if (!isOnGround)
+            return;
+        Vector2 movement = transform.right * speed;
+        movement.y = rigi.velocity.y;
+        rigi.velocity = movement;
     }
     void Flip()
     {
@@ -28,9 +41,26 @@ public class GhoulController : MonoBehaviour
         transform.rotation = rotation;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall"))
             Flip();
+        isOnGround = true;
+    }
+
+    void UpdateState()
+    {
+        if (!isOnGround)
+            ghoulState = GhoulState.Idle;
+        else ghoulState = GhoulState.Run;
+    }
+    void UpdateAnim()
+    {
+        anim.ChangeAnim(ghoulState);
+    }
+
+    public void TakeDamage()
+    {
+        gameObject.SetActive(false);
     }
 }
