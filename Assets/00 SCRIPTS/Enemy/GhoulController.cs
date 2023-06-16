@@ -41,7 +41,7 @@ public class GhoulController : AbstractEnemy,IDamageable
         transform.rotation = rotation;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private new void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
             Flip();

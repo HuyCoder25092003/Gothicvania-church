@@ -45,6 +45,9 @@ TagManager:
   - name: BG
     uniqueID: 1619429861
     locked: 0
+  - name: Enemy
+    uniqueID: 651648265
+    locked: 0
   - name: Player
     uniqueID: 1028756779
     locked: 0

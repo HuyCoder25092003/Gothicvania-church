@@ -10,6 +10,7 @@ public class AngelController : AbstractEnemy,IDamageable
     {
         angelAnimations = GetComponentInChildren<AngelAnimations>();
         angleState = AngleState.Idle;
+
     }
     void Update()
     {
