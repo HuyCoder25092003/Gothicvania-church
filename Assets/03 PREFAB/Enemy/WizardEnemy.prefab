@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 30
   _bullet: {fileID: 1155291095208486390, guid: 786856f623049d24f9cc51d36be5d41d, type: 3}
-  maxTimeShoot: 2
+  maxTimeShoot: 3
   shooting: {fileID: 1298894977}
   wizardState: 0
 --- !u!61 &1839723009
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 5455784541075392104}
   - component: {fileID: 5455784541075392109}
   - component: {fileID: 5455784541075392110}
-  - component: {fileID: 5455784541075392111}
+  - component: {fileID: 1479448296}
   m_Layer: 7
   m_Name: Animations
   m_TagString: Untagged
@@ -237,7 +237,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &5455784541075392111
+--- !u!114 &1479448296
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -342,7 +342,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5db81c6edd8067499d3122997484d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHp: 200
 --- !u!1 &1278848690
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +429,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 200
   m_WholeNumbers: 0
-  m_Value: 200
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -559,7 +558,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.0000076293945, y: 0}
+  m_AnchoredPosition: {x: 0.000015258789, y: 0}
   m_SizeDelta: {x: 0.00016785, y: -0.0000076294}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1697054879
@@ -652,8 +651,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOnGround: 0
   playerState: 0
+  attackState: 0
   attackPoint: {fileID: 451111471}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 320648814}
   hurtSound: {fileID: 8300000, guid: 1a516c11733644f41a3c1878919c4ca5, type: 3}
   attackSound: {fileID: 8300000, guid: d03b07ac01ad1e642bf738a2c103215b, type: 3}
   jumpSound: {fileID: 8300000, guid: dce60263aa9f7be468012ecdc551d8de, type: 3}
@@ -820,7 +820,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ef36d0b626b624d98c46682078c24c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combo: 0
 --- !u!1 &7961237087459175901
 GameObject:
   m_ObjectHideFlags: 0

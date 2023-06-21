@@ -4378,11 +4378,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1151413644 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 320648814, guid: 732d2e690c19871478f412ea65fca629, type: 3}
-  m_PrefabInstance: {fileID: 7961237086001588764}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1157116349
 GameObject:
   m_ObjectHideFlags: 0
@@ -19101,26 +19096,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 1278848692, guid: 732d2e690c19871478f412ea65fca629, type: 3}
-      propertyPath: m_Value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1697054877, guid: 732d2e690c19871478f412ea65fca629, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1697054877, guid: 732d2e690c19871478f412ea65fca629, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1697054877, guid: 732d2e690c19871478f412ea65fca629, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.000015258789
-      objectReference: {fileID: 0}
-    - target: {fileID: 7961237086093573072, guid: 732d2e690c19871478f412ea65fca629, type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 1151413644}
     - target: {fileID: 7961237086093573074, guid: 732d2e690c19871478f412ea65fca629, type: 3}
       propertyPath: m_RootOrder
       value: 2

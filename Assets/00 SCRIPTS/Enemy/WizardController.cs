@@ -5,7 +5,7 @@ using UnityEngine;
 public class WizardController : AbstractEnemy,IDamageable
 {
     [SerializeField] GameObject _bullet;
-    [SerializeField] float maxTimeShoot =3 ;
+    [SerializeField] float maxTimeShoot = 3;
     float countTime;
     [SerializeField] GameObject shooting;
     WizardAnimations wizardAnimations;
@@ -13,17 +13,15 @@ public class WizardController : AbstractEnemy,IDamageable
     void Start()
     {
         wizardAnimations = GetComponentInChildren<WizardAnimations>();
-        countTime = maxTimeShoot;
     }
     void Update()
     {
-
         Fire();
         UpdateAnim();
     }
     void Fire()
     {
-        if(countTime > 0)
+        if(countTime >= 0)
         {
             countTime -= Time.deltaTime;
             ChangeState(WizardState.Idle);
