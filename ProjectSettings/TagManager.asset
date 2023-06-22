@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - Ground
+  - Lose
+  - Win
   layers:
   - Default
   - TransparentFX
@@ -13,9 +16,9 @@ TagManager:
   - Water
   - UI
   - Player
-  - WizardBullet
-  - Burning-Ghoul
-  - 
+  - PlayerOnGround
+  - Enemy
+  - Ground
   - 
   - 
   - 
@@ -42,18 +45,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: BG
-    uniqueID: 1619429861
-    locked: 0
   - name: Enemy
-    uniqueID: 651648265
+    uniqueID: 867266461
     locked: 0
   - name: Player
-    uniqueID: 1028756779
+    uniqueID: 3068097083
     locked: 0
-  - name: FG
-    uniqueID: 571484469
-    locked: 0
-  - name: UI
-    uniqueID: 59933559
+  - name: BG
+    uniqueID: 2705498637
     locked: 0

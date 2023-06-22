@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2789340191678650962}
   - component: {fileID: 2789340191678650965}
   - component: {fileID: 736838600}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Avatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 651648265
-  m_SortingLayer: 2
+  m_SortingLayerID: 867266461
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: a2934b8192205b74dade5d7abc082136, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

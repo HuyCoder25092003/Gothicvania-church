@@ -10,27 +10,42 @@ public class WizardController : AbstractEnemy,IDamageable
     [SerializeField] GameObject shooting;
     WizardAnimations wizardAnimations;
     [SerializeField] WizardState wizardState;
+    [SerializeField] float distance;
     void Start()
     {
         wizardAnimations = GetComponentInChildren<WizardAnimations>();
     }
     void Update()
     {
+        if (GameManager.Instant.GameState == GAMESTATE.Over || GameManager.Instant.GameState == GAMESTATE.Win)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         Fire();
-        UpdateAnim();
     }
     void Fire()
     {
-        if(countTime >= 0)
+        if (transform.position.x - PlayerController.Instant.transform.position.x > distance)
+            return;
+        if(countTime >= 0 )
         {
-            countTime -= Time.deltaTime;
-            ChangeState(WizardState.Idle);
+            countTime -= Time.deltaTime;     
+            if (wizardState != WizardState.Idle)
+            {
+                ChangeState(WizardState.Idle);
+                UpdateAnim();
+            }      
         }     
         else if (countTime < 0)
         {
             ChangeState(WizardState.Fire);
-            countTime = maxTimeShoot;  
+            UpdateAnim();
         }
+    }
+    public void ResetCountTime()
+    {
+        countTime = maxTimeShoot;
     }
     void ChangeState(WizardState state)
     {

@@ -17,6 +17,11 @@ public class GhoulController : AbstractEnemy,IDamageable
     }
     void Update()
     {
+        if (GameManager.Instant.GameState == GAMESTATE.Over || GameManager.Instant.GameState == GAMESTATE.Win)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         UpdateState();
         UpdateAnim(); 
     }
@@ -40,8 +45,7 @@ public class GhoulController : AbstractEnemy,IDamageable
         else rotation.y = 0;
         transform.rotation = rotation;
     }
-
-    private new void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
             Flip();

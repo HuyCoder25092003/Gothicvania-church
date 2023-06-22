@@ -14,6 +14,11 @@ public class AngelController : AbstractEnemy,IDamageable
     }
     void Update()
     {
+        if (GameManager.Instant.GameState == GAMESTATE.Over || GameManager.Instant.GameState == GAMESTATE.Win)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         UpdateState();
         UpdateAnim();
     }
