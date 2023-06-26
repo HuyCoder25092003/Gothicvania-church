@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Lose
   - Win
+  - Bullet
   layers:
   - Default
   - TransparentFX

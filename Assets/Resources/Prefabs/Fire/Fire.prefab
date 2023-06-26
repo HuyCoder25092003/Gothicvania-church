@@ -114,11 +114,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1155291095208486377}
-  - component: {fileID: 1155291095208486379}
-  - component: {fileID: 1155291095208486376}
+  - component: {fileID: 1368117348826912644}
+  - component: {fileID: 6581989040478283740}
   m_Layer: 8
   m_Name: Fire
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,7 +140,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &1155291095208486379
+--- !u!114 &1368117348826912644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155291095208486390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92213a4e825fc094d956396f38051416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 30
+  speedBullet: 5
+  timeDestruct: 0.3
+--- !u!50 &6581989040478283740
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -155,27 +170,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &1155291095208486376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1155291095208486390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92213a4e825fc094d956396f38051416, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 30
-  speed: 3
-  timeDestruct: 5
 --- !u!1 &1155291095260342547
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,6 +221,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.017141938, y: 0}
+  m_Offset: {x: -0.043973625, y: -0.053663135}
   serializedVersion: 2
-  m_Radius: 0.94569075
+  m_Radius: 0.9188592

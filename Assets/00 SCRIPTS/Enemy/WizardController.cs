@@ -11,16 +11,19 @@ public class WizardController : AbstractEnemy,IDamageable
     WizardAnimations wizardAnimations;
     [SerializeField] WizardState wizardState;
     [SerializeField] float distance;
+    void Awake()
+    {
+        ActiveManager.Instant.Objects.Add(this.gameObject);
+    }
     void Start()
     {
         wizardAnimations = GetComponentInChildren<WizardAnimations>();
     }
     void Update()
     {
-        if (GameManager.Instant.GameState == GAMESTATE.Over || GameManager.Instant.GameState == GAMESTATE.Win)
+        if (!CheckGameState())
         {
             gameObject.SetActive(false);
-            return;
         }
         Fire();
     }
@@ -57,6 +60,7 @@ public class WizardController : AbstractEnemy,IDamageable
     }
     public void TakeDamage()
     {
+        SetFx(transform.position,2);
         gameObject.SetActive(false);
     }
 }

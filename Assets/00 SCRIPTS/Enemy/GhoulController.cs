@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
 public class GhoulController : AbstractEnemy,IDamageable
 {
     [SerializeField] float speed;
     Rigidbody2D rigi;
     [SerializeField] GhoulState ghoulState;
-    [SerializeField]bool isOnGround;
-    GhoulAnimations anim;
+    [SerializeField] bool isOnGround;
+    GhoulAnimations anim; 
+    void Awake()
+    {
+        ActiveManager.Instant.Objects.Add(this.gameObject);
+    }
     void Start()
     {
         rigi = GetComponent<Rigidbody2D>();
@@ -17,13 +19,13 @@ public class GhoulController : AbstractEnemy,IDamageable
     }
     void Update()
     {
-        if (GameManager.Instant.GameState == GAMESTATE.Over || GameManager.Instant.GameState == GAMESTATE.Win)
+        if (!CheckGameState())
         {
             gameObject.SetActive(false);
-            return;
         }
         UpdateState();
-        UpdateAnim(); 
+        UpdateAnim();
+        
     }
     void FixedUpdate()
     {
@@ -65,6 +67,7 @@ public class GhoulController : AbstractEnemy,IDamageable
 
     public void TakeDamage()
     {
+        SetFx(transform.position,1);
         gameObject.SetActive(false);
     }
 }

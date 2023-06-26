@@ -20,7 +20,7 @@ public class WizardAnimations : MonoBehaviour,IAnimation
 
     public void DoFire()
     {
-        if (GameManager.Instant.GameState == GAMESTATE.Over)
+        if (GameManager.Instant.GameState !=GAMESTATE.Play)
         {
             bullet.SetActive(false);
             return;

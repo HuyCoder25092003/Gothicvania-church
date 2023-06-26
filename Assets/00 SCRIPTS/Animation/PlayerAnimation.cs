@@ -2,18 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimation : MonoBehaviour,IAnimation
+public class PlayerAnimation : MonoBehaviour, IAnimation
 {
     Animator animator;
     PlayerState oldState;
     PlayerController playerController;
-    void Start()
+
+    static readonly int attackState = Animator.StringToHash("AttackState");
+
+    //AttackState
+    const float noneAttackState = 0f;
+    const float kickAttackState = 1.2f;
+    const float punchAttackState = 2.1f;
+
+    //AirState
+    const float jumpState = 0f;
+    const float fallState = 1f;
+    const float flyingKickState = 2f;
+
+    //ShitDownState
+    const float crouchState = 0f;
+    const float crouchAttackState = 0.5f;
+
+    void Awake()
     {
         playerController = GetComponentInParent<PlayerController>();
         animator = GetComponent<Animator>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         Jump();
@@ -22,51 +37,51 @@ public class PlayerAnimation : MonoBehaviour,IAnimation
     }
     void Crouch()
     {
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetKey(KeyCode.C) || playerController.PlayerState != PlayerState.Crouch)
             return;
-        if(PlayerController.Instant.PlayerState == PlayerState.Crouch)
-            animator.SetFloat("AttackState", 0);
+
+        animator.SetFloat(attackState, crouchState);
     }
     void Jump()
     {
         if (Input.GetKey(KeyCode.C))
             return;
-        if (PlayerController.Instant.PlayerState == PlayerState.Jump)
-            animator.SetFloat("AttackState", 0);
-        else animator.SetFloat("AttackState", 1);
+        if (playerController.PlayerState == PlayerState.Jump)
+            animator.SetFloat(attackState, jumpState);
+        else if(playerController.PlayerState == PlayerState.Fall)
+            animator.SetFloat(attackState, fallState);
     }
     void Attack()
     {
-        if (PlayerController.Instant.gameObject == null)
+        if (playerController == null)
             return;
 
         if (Input.GetKey(KeyCode.C))
         {
-            if (PlayerController.Instant.PlayerState == PlayerState.Fall || PlayerController.Instant.PlayerState == PlayerState.Jump)
+            if (playerController.PlayerState == PlayerState.Fall || playerController.PlayerState == PlayerState.Jump)
             {
-                animator.SetFloat("AttackState", 2);
+                animator.SetFloat(attackState, flyingKickState);
             }
         }
 
-        if (PlayerController.Instant.PlayerState == PlayerState.Idle 
-            || PlayerController.Instant.PlayerState == PlayerState.Walk)
+        if (playerController.PlayerState == PlayerState.Idle || playerController.PlayerState == PlayerState.Walk)
         {
             if (Input.GetKey(KeyCode.C))
             {
-                PlayerController.Instant.AttackState = AttackState.Kick;
-                animator.SetFloat("AttackState",(int)AttackState.Kick);
+                playerController.AttackState = AttackState.Kick;
+                animator.SetFloat(attackState, kickAttackState);
             }
             else
             {
-                PlayerController.Instant.AttackState = AttackState.None;
-                animator.SetFloat("AttackState", (int)AttackState.None);
+                playerController.AttackState = AttackState.None;
+                animator.SetFloat(attackState, noneAttackState);
             }
         }
-        if (PlayerController.Instant.PlayerState == PlayerState.Crouch && Input.GetKeyDown(KeyCode.C))
-        {
-            animator.SetFloat("AttackState", 1);
-        }
 
+        if (playerController.PlayerState == PlayerState.Crouch && Input.GetKeyDown(KeyCode.C))
+        {
+            animator.SetFloat(attackState, crouchAttackState);
+        }
     }
     public void DoAttack()
     {
@@ -74,40 +89,41 @@ public class PlayerAnimation : MonoBehaviour,IAnimation
     }
     public void FinishCombo()
     {
-        if (Input.GetKey(KeyCode.C) && PlayerController.Instant.AttackState == AttackState.Kick)
+        if (Input.GetKey(KeyCode.C) && playerController.AttackState == AttackState.Kick)
         {
-            PlayerController.Instant.AttackState = AttackState.Punch;
-            animator.SetFloat("AttackState",(int)AttackState.Punch);
+            playerController.AttackState = AttackState.Punch;
+            animator.SetFloat(attackState, punchAttackState);
             return;
         }
 
-        animator.SetFloat("AttackState", (int)AttackState.None);
-        PlayerController.Instant.AttackState = AttackState.None;
-        PlayerController.Instant.PlayerState = PlayerState.Idle;
+        animator.SetFloat(attackState, noneAttackState);
+        playerController.AttackState = AttackState.None;
+        playerController.PlayerState = PlayerState.Idle;
     }
-
     public void ChangeAnim(PlayerState playerState)
     {
         animator.SetTrigger(playerState.ToString());
-        if (playerState == PlayerState.Idle && oldState == PlayerState.Fall || oldState == PlayerState.Jump)
+
+        if ((playerState == PlayerState.Idle && oldState == PlayerState.Fall) || oldState == PlayerState.Jump)
         {
-            animator.SetFloat("AttackState", 0);
-            PlayerController.Instant.AttackState = AttackState.None;
-        }    
+            animator.SetFloat(attackState, noneAttackState);
+            playerController.AttackState = AttackState.None;
+        }
+
         oldState = playerState;
     }
     public void ChangeAnim(GhoulState ghoulState)
     {
-        
+
     }
 
     public void ChangeAnim(WizardState wizardState)
     {
-        
+
     }
 
     public void ChangeAnim(AngleState angleState)
     {
-        
+
     }
 }

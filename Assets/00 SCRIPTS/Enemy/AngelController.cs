@@ -6,18 +6,20 @@ public class AngelController : AbstractEnemy,IDamageable
 {
     AngelAnimations angelAnimations;
     [SerializeField] AngleState angleState;
+    void Awake()
+    {
+        ActiveManager.Instant.Objects.Add(this.gameObject);
+    }
     void Start()
     {
         angelAnimations = GetComponentInChildren<AngelAnimations>();
         angleState = AngleState.Idle;
-
     }
     void Update()
     {
-        if (GameManager.Instant.GameState == GAMESTATE.Over || GameManager.Instant.GameState == GAMESTATE.Win)
+        if (!CheckGameState())
         {
-            gameObject.SetActive(false);
-            return;
+            gameObject.SetActive(false);   
         }
         UpdateState();
         UpdateAnim();
@@ -38,8 +40,8 @@ public class AngelController : AbstractEnemy,IDamageable
 
     public void TakeDamage()
     {
+        SetFx(transform.position,3);
         gameObject.SetActive(false);
     }
-
 }
 

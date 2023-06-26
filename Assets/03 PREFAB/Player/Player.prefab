@@ -650,7 +650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64c6db1baeb13d84c963445bbd7ea9d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageCooldown: 0.5
   isOnGround: 0
   playerState: 0
   attackState: 0
@@ -660,7 +659,7 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: d03b07ac01ad1e642bf738a2c103215b, type: 3}
   jumpSound: {fileID: 8300000, guid: dce60263aa9f7be468012ecdc551d8de, type: 3}
   killSound: {fileID: 8300000, guid: cbebe382a7ad8c141a675810ed97094a, type: 3}
-  deathTimer: 10
+  pointWin: {fileID: 0}
 --- !u!50 &7961237086093573068
 Rigidbody2D:
   serializedVersion: 4
