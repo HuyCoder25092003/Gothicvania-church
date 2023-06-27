@@ -109,7 +109,6 @@ public class PlayerAnimation : MonoBehaviour, IAnimation
             animator.SetFloat(attackState, noneAttackState);
             playerController.AttackState = AttackState.None;
         }
-
         oldState = playerState;
     }
     public void ChangeAnim(GhoulState ghoulState)
