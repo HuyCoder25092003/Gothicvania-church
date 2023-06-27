@@ -19,7 +19,8 @@ public class AngelController : AbstractEnemy,IDamageable
     {
         if (!CheckGameState())
         {
-            gameObject.SetActive(false);   
+            gameObject.SetActive(false);
+            return;
         }
         UpdateState();
         UpdateAnim();

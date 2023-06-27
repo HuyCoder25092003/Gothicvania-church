@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4244281895904914005}
   - component: {fileID: -6787635211470136275}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FXDeathGhoul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4244281896770118391}
   - component: {fileID: 4265390245861704509}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Avatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

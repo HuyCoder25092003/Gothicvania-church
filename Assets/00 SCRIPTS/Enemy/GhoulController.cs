@@ -22,6 +22,7 @@ public class GhoulController : AbstractEnemy,IDamageable
         if (!CheckGameState())
         {
             gameObject.SetActive(false);
+            return;
         }
         UpdateState();
         UpdateAnim();

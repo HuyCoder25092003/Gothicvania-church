@@ -24,6 +24,7 @@ public class WizardController : AbstractEnemy,IDamageable
         if (!CheckGameState())
         {
             gameObject.SetActive(false);
+            return;
         }
         Fire();
     }
