@@ -68,7 +68,7 @@ public class GhoulController : AbstractEnemy,IDamageable
 
     public void TakeDamage()
     {
-        SetFx(transform.position,1);
+        SetFx();
         gameObject.SetActive(false);
     }
 }

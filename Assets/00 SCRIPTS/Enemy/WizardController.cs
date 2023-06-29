@@ -61,7 +61,7 @@ public class WizardController : AbstractEnemy,IDamageable
     }
     public void TakeDamage()
     {
-        SetFx(transform.position,2);
+        SetFx();
         gameObject.SetActive(false);
     }
 }

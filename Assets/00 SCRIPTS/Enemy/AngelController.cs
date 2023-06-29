@@ -41,7 +41,7 @@ public class AngelController : AbstractEnemy,IDamageable
 
     public void TakeDamage()
     {
-        SetFx(transform.position,3);
+        SetFx();
         gameObject.SetActive(false);
     }
 }

@@ -9,6 +9,8 @@ TagManager:
   - Lose
   - Win
   - Bullet
+  - Enemy
+  - ColliderPlayer
   layers:
   - Default
   - TransparentFX
