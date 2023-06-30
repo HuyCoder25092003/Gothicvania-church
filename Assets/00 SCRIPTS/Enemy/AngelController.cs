@@ -38,7 +38,6 @@ public class AngelController : AbstractEnemy,IDamageable
     {
         angelAnimations.ChangeAnim(angleState);
     }
-
     public void TakeDamage()
     {
         SetFx();
