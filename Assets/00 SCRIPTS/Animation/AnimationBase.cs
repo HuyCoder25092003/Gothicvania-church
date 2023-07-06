@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AnimationBase : MonoBehaviour
+public abstract class AnimationBase<T> : MonoBehaviour, IAnimation<T>
 {
-    public abstract void Moving();
+    public abstract void ChangeAnim(T state);
 }
+

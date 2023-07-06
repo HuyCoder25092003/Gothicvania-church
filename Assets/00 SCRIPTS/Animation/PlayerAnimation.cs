@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimation : MonoBehaviour, IAnimation
+public class PlayerAnimation : AnimationBase<PlayerState>
 {
     Animator animator;
     PlayerState oldState;
@@ -100,7 +100,7 @@ public class PlayerAnimation : MonoBehaviour, IAnimation
         playerController.AttackState = AttackState.None;
         playerController.PlayerState = PlayerState.Idle;
     }
-    public void ChangeAnim(PlayerState playerState)
+    public override void ChangeAnim(PlayerState playerState)
     {
         animator.SetTrigger(playerState.ToString());
 
@@ -110,19 +110,5 @@ public class PlayerAnimation : MonoBehaviour, IAnimation
             playerController.AttackState = AttackState.None;
         }
         oldState = playerState;
-    }
-    public void ChangeAnim(GhoulState ghoulState)
-    {
-
-    }
-
-    public void ChangeAnim(WizardState wizardState)
-    {
-
-    }
-
-    public void ChangeAnim(AngleState angleState)
-    {
-
     }
 }

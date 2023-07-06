@@ -6,6 +6,7 @@ public class AngelController : AbstractEnemy,IDamageable
 {
     AngelAnimations angelAnimations;
     [SerializeField] AngleState angleState;
+    AngleState oldState;
     void Awake()
     {
         ActiveManager.Instant.Objects.Add(this.gameObject);
@@ -29,7 +30,11 @@ public class AngelController : AbstractEnemy,IDamageable
     {
         if (this.transform.position.x - PlayerController.Instant.transform.position.x > 10f)
         {
-            angleState = AngleState.Idle;
+            if (angleState != oldState)
+            {
+                angleState = AngleState.Idle;
+                oldState = angleState;
+            }
             return;
         }
         angleState = AngleState.Attack;

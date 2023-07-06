@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WizardAnimations : MonoBehaviour,IAnimation
+public class WizardAnimations : AnimationBase<WizardState>
 {
     Animator anim;
     Transform shooting;
     WizardState oldState;
     WizardController controller;
-    // Start is called before the first frame update
     GameObject bullet;
     void Start()
     {
@@ -33,16 +32,11 @@ public class WizardAnimations : MonoBehaviour,IAnimation
     {
         controller.ResetCountTime();
     }
-    public void ChangeAnim(WizardState wizardState)
+    public override void ChangeAnim(WizardState wizardState)
     {
         if(oldState == wizardState)
             return;
         anim.SetTrigger(wizardState.ToString());
         oldState = wizardState;
     }
-    public void ChangeAnim(PlayerState playerState) { }
-
-    public void ChangeAnim(GhoulState ghoulState) { }
-
-    public void ChangeAnim(AngleState angleState){}
 }
