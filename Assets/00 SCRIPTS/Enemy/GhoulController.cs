@@ -32,7 +32,7 @@ public class GhoulController : AbstractEnemy,IDamageable
     {
         Moving();
     }
-    void Moving()
+    protected override void Moving()
     {
         if (!isOnGround)
             return;
@@ -65,7 +65,6 @@ public class GhoulController : AbstractEnemy,IDamageable
     {
         anim.ChangeAnim(ghoulState);
     }
-
     public void TakeDamage()
     {
         SetFx();
